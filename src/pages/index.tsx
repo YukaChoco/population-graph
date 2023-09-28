@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import Header from './components/Header';
+import SettingSheet from './components/SettingSheet';
+import GraphSheet from './components/GraphSheet';
 
 export default function Home() {
   return (
@@ -16,7 +18,8 @@ export default function Home() {
       </Head>
       <Header />
       <main className={styles.main}>
-        <div>hogehoge</div>
+        <GraphSheet />
+        <SettingSheet />
       </main>
     </>
   );
