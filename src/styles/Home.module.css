@@ -1,15 +1,13 @@
 .main {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: calc(32px + 1.5rem);
   background: #f5f5f5;
   display: grid;
   grid-template-columns: none;
-  grid-template-rows: 3fr 2fr;
 }
 
 @media (min-width: 640px) {
   .main {
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: none;
   }
 }
