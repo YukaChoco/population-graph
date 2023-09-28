@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>選んで比較-都道府県別総人口推移グラフ</title>
+        <title>選んで人口を比較しよう</title>
         <meta
           name="description"
           content="都道府県別総人口の推移をグラフで確認できるサイトです。"
