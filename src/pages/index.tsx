@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import SettingSheet from '@/components/SettingSheet';
 import GraphSheet from '@/components/GraphSheet';
 import usePrefectures from '@/hooks/usePrefectures';
+import LoadingModal from '@/components/LoadingModal';
 
 export default function Home() {
   const { prefectures, labels, handlePrefectureSelected } = usePrefectures();
@@ -45,6 +46,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
+        <LoadingModal onOpen />
         <Header />
         <main className={styles.main}>
           <Main />
