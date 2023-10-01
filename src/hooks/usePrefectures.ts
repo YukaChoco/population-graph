@@ -8,7 +8,9 @@ import usePopulation from './usePopulation';
 
 export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
-  const { getPopulationData } = usePopulation();
+  const [labels, setLabels] = useState<string[] | null>(null);
+
+  const { getFirstPopulationData, getDisplayPopulationData } = usePopulation();
 
   const getPopulationIndex = (prefCode: number) => {
     if (!prefectures) return -1;
@@ -19,7 +21,6 @@ export default function usePrefectures() {
   };
 
   const setPopulation = async (prefCode: number) => {
-    console.log(prefectures);
     if (!prefectures) return;
 
     const newPrefectures = Array.from(prefectures);
@@ -29,7 +30,7 @@ export default function usePrefectures() {
 
     const [currentPrefectureData] = newPrefectures.splice(prefIndex, 1);
 
-    const newData = await getPopulationData(prefCode);
+    const newData = await getDisplayPopulationData(prefCode);
 
     if (newData) {
       const newPrefectureData: Prefecture = {
@@ -39,7 +40,6 @@ export default function usePrefectures() {
       };
       newPrefectures.splice(prefIndex, 0, newPrefectureData);
       setPrefectures(newPrefectures);
-      console.log(newPrefectures);
     }
   };
 
@@ -78,14 +78,27 @@ export default function usePrefectures() {
     }
   };
 
-  const setPrefectureArray = (prefectures: PrefectureCodeName[]) => {
+  const setPrefectureArray = async (prefectures: PrefectureCodeName[]) => {
+    const result = await getFirstPopulationData(prefectures[0].prefCode);
+    if (!result) return;
+    const { labels, firstData } = result;
     const prefectureArray: Prefecture[] = prefectures.map(
-      (prefecture) => ({
-        ...prefecture,
-        selected: false,
-        data: [],
-      }),
+      (prefecture, index) => {
+        if (index === 0) {
+          return {
+            ...prefecture,
+            selected: true,
+            data: firstData,
+          };
+        }
+        return {
+          ...prefecture,
+          selected: false,
+          data: [],
+        };
+      },
     );
+    setLabels(labels);
     setPrefectures(prefectureArray);
   };
 
@@ -112,5 +125,5 @@ export default function usePrefectures() {
   //   handlePrefectureSelected(18, false);
   // }
 
-  return { prefectures };
+  return { prefectures, labels };
 }

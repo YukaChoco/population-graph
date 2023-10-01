@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default function CheckBox(props: Props) {
-  return <div>CheckBox:{props.prefecture.prefName}</div>;
+  return <div>{props.prefecture.prefName}</div>;
 }
