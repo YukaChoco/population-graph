@@ -15,6 +15,7 @@ export default function Home() {
         <>
           <GraphSheet
             populationGraph={{
+              populationType: 0,
               labels: labels,
               prefectures: prefectures,
             }}
