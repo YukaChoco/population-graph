@@ -5,7 +5,7 @@ import Prefecture from '@/types/Prefecture';
 
 interface Props {
   populationGraph: {
-    populationType: number;
+    populationType: string;
     labels: string[];
     prefectures: Prefecture[];
   };

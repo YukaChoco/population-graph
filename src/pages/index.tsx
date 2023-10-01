@@ -18,7 +18,7 @@ export default function Home() {
           <LoadingModal onOpen={loading} />
           <GraphSheet
             populationGraph={{
-              populationType: 0,
+              populationType: '総人口',
               labels: labels,
               prefectures: prefectures,
             }}

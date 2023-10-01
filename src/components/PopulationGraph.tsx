@@ -26,7 +26,7 @@ ChartJS.register(
 );
 
 interface Props {
-  populationType: number;
+  populationType: string;
   labels: string[];
   prefectures: Prefecture[];
 }
@@ -50,13 +50,14 @@ export default function PopulationGraph(props: Props) {
     .filter((prefecture) => prefecture.selected)
     .map((prefecture) => ({
       label: prefecture.prefName,
-      data: prefecture.data[props.populationType].data,
+      data: prefecture.data[0].data,
     }));
 
   const graphData = {
     labels: props.labels,
     datasets: popultationData,
   };
+
   return (
     <div className={styles.graph}>
       <Line options={options} data={graphData} />
