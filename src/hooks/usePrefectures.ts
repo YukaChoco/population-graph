@@ -4,9 +4,20 @@ import Prefecture, {
   PrefectureCodeName,
 } from '@/types/Prefecture';
 import axios from 'axios';
+import usePopulation from './usePopulation';
 
 export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
+  const { getPopulationData } = usePopulation();
+
+  const handlePrefectureSelected = async (prefCode: number) => {
+    if (!prefectures) return;
+
+    const returndata = await getPopulationData(prefCode);
+    if (returndata) {
+      console.log(returndata);
+    }
+  };
 
   const setPrefectureArray = (prefectures: PrefectureCodeName[]) => {
     const prefectureArray: Prefecture[] = prefectures.map(
