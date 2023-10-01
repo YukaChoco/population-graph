@@ -29,9 +29,12 @@ interface Props {
   populationType: string;
   labels: string[];
   prefectures: Prefecture[];
+  getPopulationWithType: (prefecture: Prefecture, type: string) => number[];
 }
 
 export default function PopulationGraph(props: Props) {
+  const { populationType, labels, prefectures, getPopulationWithType } = props;
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -41,20 +44,20 @@ export default function PopulationGraph(props: Props) {
       },
       title: {
         display: true,
-        text: '都道府県別の総人口推移グラフ',
+        text: `都道府県別の${populationType}推移グラフ`,
       },
     },
   };
 
-  const popultationData = props.prefectures
+  const popultationData = prefectures
     .filter((prefecture) => prefecture.selected)
     .map((prefecture) => ({
       label: prefecture.prefName,
-      data: prefecture.data[0].data,
+      data: getPopulationWithType(prefecture, populationType),
     }));
 
   const graphData = {
-    labels: props.labels,
+    labels,
     datasets: popultationData,
   };
 

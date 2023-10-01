@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import usePrefectures from './usePrefectures';
 import { POPULATION_TYPE } from '@/const';
+import Prefecture from '@/types/Prefecture';
 
 export default function usePopulationType() {
   const [populationType, setPopulationType] = useState<string>(
@@ -11,5 +11,16 @@ export default function usePopulationType() {
     setPopulationType(value);
   };
 
-  return { populationType, handlePopulationTypeSelecter };
+  const getPopulationWithType = (prefecture: Prefecture, type: string) => {
+    const dataIndex = prefecture.data.findIndex(
+      (populationDatas) => populationDatas.label === type,
+    );
+    return prefecture.data[dataIndex].data;
+  };
+
+  return {
+    populationType,
+    handlePopulationTypeSelecter,
+    getPopulationWithType,
+  };
 }
