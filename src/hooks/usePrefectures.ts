@@ -10,6 +10,14 @@ export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
   const { getPopulationData } = usePopulation();
 
+  const getPopulationIndex = (prefCode: number) => {
+    if (!prefectures) return -1;
+
+    return prefectures.findIndex(
+      (prefecture) => prefecture.prefCode === prefCode,
+    );
+  };
+
   const handlePrefectureSelected = async (prefCode: number) => {
     if (!prefectures) return;
 
