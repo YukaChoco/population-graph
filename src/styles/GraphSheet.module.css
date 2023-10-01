@@ -1,2 +1,6 @@
 .sheet {
+  max-height: 100vh;
+  padding: 8px 0px;
+  display: grid;
+  grid-template-rows: 1fr 80vh;
 }
