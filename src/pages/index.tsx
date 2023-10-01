@@ -6,10 +6,16 @@ import GraphSheet from '@/components/GraphSheet';
 import usePrefectures from '@/hooks/usePrefectures';
 import LoadingModal from '@/components/LoadingModal';
 import useLoading from '@/hooks/useLoading';
+import usePopulationType from '@/hooks/usePopulationType';
 
 export default function Home() {
   const { prefectures, labels, handlePrefectureSelected } = usePrefectures();
   const { loading, setLoading } = useLoading();
+  const {
+    populationType,
+    handlePopulationTypeSelecter,
+    getPopulationWithType,
+  } = usePopulationType();
 
   const Main = () => {
     if (prefectures && labels) {
@@ -17,13 +23,14 @@ export default function Home() {
         <>
           <LoadingModal onOpen={loading} />
           <GraphSheet
+            populationType={populationType}
             populationGraph={{
-              populationType: 0,
-              labels: labels,
-              prefectures: prefectures,
+              labels,
+              prefectures,
+              getPopulationWithType,
             }}
             populationTypeSelecter={{
-              handlePopulationTypeSelecter: () => {},
+              handlePopulationTypeSelecter,
             }}
           />
           <SettingSheet
