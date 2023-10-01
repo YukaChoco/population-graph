@@ -22,6 +22,19 @@ export const POPULATION_TYPE = [
   '老年人口',
 ];
 
+export const GRAPH_OPTIONS = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {
+      display: true,
+    },
+  },
+};
+
 export const NO_DATA = [
   {
     label: ' 都道府県を選択してください',

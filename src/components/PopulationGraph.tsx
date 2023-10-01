@@ -13,7 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from '@/styles/PopulationGraph.module.css';
 import Prefecture from '@/types/Prefecture';
-import { NO_DATA } from '@/const';
+import { GRAPH_OPTIONS, NO_DATA } from '@/const';
 
 ChartJS.register(
   CategoryScale,
@@ -37,14 +37,9 @@ export default function PopulationGraph(props: Props) {
   const { populationType, labels, prefectures, getPopulationWithType } = props;
 
   const options = {
-    responsive: true,
-    maintainAspectRatio: false,
+    ...GRAPH_OPTIONS,
     plugins: {
-      legend: {
-        position: 'top' as const,
-      },
       title: {
-        display: true,
         text: `都道府県別の${populationType}推移グラフ`,
       },
     },
