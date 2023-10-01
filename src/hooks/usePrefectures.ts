@@ -125,5 +125,5 @@ export default function usePrefectures() {
   //   handlePrefectureSelected(18, false);
   // }
 
-  return { prefectures, labels };
+  return { prefectures, labels, handlePrefectureSelected };
 }
