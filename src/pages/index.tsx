@@ -6,26 +6,16 @@ import GraphSheet from '@/components/GraphSheet';
 import usePrefectures from '@/hooks/usePrefectures';
 
 export default function Home() {
-  const { prefectures } = usePrefectures();
+  const { prefectures, labels } = usePrefectures();
   console.log(prefectures);
 
   const Main = () => {
-    if (prefectures) {
+    if (prefectures && labels) {
       return (
         <>
           <GraphSheet
             populationGraph={{
-              labels: [
-                '1980',
-                '1985',
-                '1990',
-                '1995',
-                '2000',
-                '2005',
-                '2010',
-                '2015',
-                '2020',
-              ],
+              labels: labels,
               prefectures: prefectures,
             }}
             populationTypeSelecter={{

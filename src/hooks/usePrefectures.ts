@@ -8,7 +8,9 @@ import usePopulation from './usePopulation';
 
 export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
-  const { getPopulationData } = usePopulation();
+  const [labels, setLabels] = useState<string[] | null>(null);
+
+  const { getFirstLabelsData, getPopulationData } = usePopulation();
 
   const getPopulationIndex = (prefCode: number) => {
     if (!prefectures) return -1;
@@ -79,13 +81,11 @@ export default function usePrefectures() {
   };
 
   const setPrefectureArray = (prefectures: PrefectureCodeName[]) => {
-    const prefectureArray: Prefecture[] = prefectures.map(
-      (prefecture) => ({
-        ...prefecture,
-        selected: false,
-        data: [],
-      }),
-    );
+    const prefectureArray: Prefecture[] = prefectures.map((prefecture) => ({
+      ...prefecture,
+      selected: false,
+      data: [],
+    }));
     setPrefectures(prefectureArray);
   };
 
@@ -94,6 +94,8 @@ export default function usePrefectures() {
       try {
         const response = await axios.get<GetPrefecture>('/api/prefecture');
         const { result } = response.data;
+        const firstLabels = await getFirstLabelsData(result[0].prefCode);
+        if (firstLabels) setLabels(firstLabels);
         setPrefectureArray(result);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -112,5 +114,5 @@ export default function usePrefectures() {
   //   handlePrefectureSelected(18, false);
   // }
 
-  return { prefectures };
+  return { prefectures, labels };
 }
