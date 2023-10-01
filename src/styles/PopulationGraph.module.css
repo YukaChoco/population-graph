@@ -1,0 +1,11 @@
+.graph {
+  height: 100%;
+  width: 100%;
+  padding: 16px 4px;
+}
+
+@media (min-width: 640px) {
+  .graph {
+    padding: 16px;
+  }
+}
