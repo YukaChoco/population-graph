@@ -17,7 +17,7 @@ export default function usePrefectures() {
         data: [],
       }),
     );
-    return prefectureArray;
+    setPrefectures(prefectureArray);
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function usePrefectures() {
       try {
         const response = await axios.get<GetPrefecture>('/api/prefecture');
         const { result } = response.data;
-        setPrefectures(setPrefectureArray(result));
+        setPrefectureArray(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
