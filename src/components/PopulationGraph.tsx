@@ -45,18 +45,6 @@ export default function PopulationGraph(props: Props) {
     },
   };
 
-  const labels = [
-    '1980',
-    '1985',
-    '1990',
-    '1995',
-    '2000',
-    '2005',
-    '2010',
-    '2015',
-    '2020',
-  ];
-
   const popultationData = [
     {
       label: '大阪府',
@@ -77,7 +65,7 @@ export default function PopulationGraph(props: Props) {
   ];
 
   const graphData = {
-    labels,
+    labels: props.labels,
     datasets: popultationData,
   };
   return (
