@@ -18,6 +18,30 @@ export default function usePrefectures() {
     );
   };
 
+  const setPopulation = async (prefCode: number) => {
+    console.log(prefectures);
+    if (!prefectures) return;
+
+    const newPrefectures = Array.from(prefectures);
+    const prefIndex = getPopulationIndex(prefCode);
+
+    if (prefectures[prefIndex].data.length !== 0) return;
+
+    const [currentPrefectureData] = newPrefectures.splice(prefIndex, 1);
+
+    const newData = await getPopulationData(prefCode);
+
+    if (newData) {
+      const newPrefectureData: Prefecture = {
+        ...currentPrefectureData,
+        data: newData,
+      };
+      newPrefectures.splice(prefIndex, 0, newPrefectureData);
+      setPrefectures(newPrefectures);
+      console.log(newPrefectures);
+    }
+  };
+
   const handlePrefectureSelected = async (prefCode: number) => {
     if (!prefectures) return;
 
@@ -51,6 +75,11 @@ export default function usePrefectures() {
     };
     getPrefectureData();
   }, []);
+
+  // test setPopulation
+  if (prefectures && prefectures[getPopulationIndex(6)].data.length === 0) {
+    setPopulation(6);
+  }
 
   return { prefectures };
 }
