@@ -14,3 +14,10 @@ export const PREFECTURES_GROUP = [
   { groupName: '四国地方', prefCode: [36, 37, 38, 39] },
   { groupName: '九州地方', prefCode: [40, 41, 42, 43, 44, 45, 46, 47] },
 ];
+
+export const POPULATION_TYPE = [
+  '総人口',
+  '年少人口',
+  '生産年齢人口',
+  '老年人口',
+];
