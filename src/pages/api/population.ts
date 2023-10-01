@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { API_HEADERS } from '@/const';
+import { GetPopulation } from '@/types/Population';
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +11,7 @@ export default async function handler(
     const { prefCode } = req.query;
     const apiUrl = `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${prefCode}`;
 
-    const response = await axios.get(apiUrl, API_HEADERS);
+    const response = await axios.get<GetPopulation>(apiUrl, API_HEADERS);
 
     const data = response.data;
 
