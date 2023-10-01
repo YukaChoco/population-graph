@@ -1,8 +1,9 @@
 .header {
   width: 100vw;
   background: #1e5471;
-  position: fixed;
+  position: absolute;
   top: 0px;
+  left: 0px;
 }
 
 .h1 {
