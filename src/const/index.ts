@@ -21,3 +21,20 @@ export const POPULATION_TYPE = [
   '生産年齢人口',
   '老年人口',
 ];
+
+export const NO_DATA = [
+  {
+    label: ' 都道府県を選択してください',
+    data: [],
+    borderColor: 'rgba(75, 192, 192, 1)',
+    borderWidth: 2,
+    fill: false,
+  },
+  {
+    label: '',
+    data: [],
+    borderColor: 'rgba(75, 192, 192, 1)',
+    borderWidth: 2,
+    fill: false,
+  },
+];

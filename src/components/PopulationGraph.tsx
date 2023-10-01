@@ -13,6 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from '@/styles/PopulationGraph.module.css';
 import Prefecture from '@/types/Prefecture';
+import { NO_DATA } from '@/const';
 
 ChartJS.register(
   CategoryScale,
@@ -58,7 +59,7 @@ export default function PopulationGraph(props: Props) {
 
   const graphData = {
     labels,
-    datasets: popultationData,
+    datasets: popultationData.length !== 0 ? popultationData : NO_DATA,
   };
 
   return (
