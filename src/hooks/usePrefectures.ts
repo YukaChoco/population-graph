@@ -20,17 +20,16 @@ export default function usePrefectures() {
     return prefectureArray;
   };
 
-  const getPrefectureData = async () => {
-    try {
-      const response = await axios.get<GetPrefecture>('/api/prefecture');
-      const { result } = response.data;
-      setPrefectures(setPrefectureArray(result));
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
   useEffect(() => {
+    const getPrefectureData = async () => {
+      try {
+        const response = await axios.get<GetPrefecture>('/api/prefecture');
+        const { result } = response.data;
+        setPrefectures(setPrefectureArray(result));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
     getPrefectureData();
   }, []);
 
