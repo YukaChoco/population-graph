@@ -34,6 +34,7 @@ export default function usePrefectures() {
     if (newData) {
       const newPrefectureData: Prefecture = {
         ...currentPrefectureData,
+        selected: true,
         data: newData,
       };
       newPrefectures.splice(prefIndex, 0, newPrefectureData);
@@ -42,12 +43,38 @@ export default function usePrefectures() {
     }
   };
 
-  const handlePrefectureSelected = async (prefCode: number) => {
+  const switchSetting = (prefIndex: number, selected: boolean) => {
     if (!prefectures) return;
 
-    const returndata = await getPopulationData(prefCode);
-    if (returndata) {
-      console.log(returndata);
+    const newPrefectures = Array.from(prefectures);
+
+    if (prefectures[prefIndex].selected === selected) return;
+
+    const [currentPrefectureData] = newPrefectures.splice(prefIndex, 1);
+
+    const newPrefectureData: Prefecture = {
+      ...currentPrefectureData,
+      selected: selected,
+    };
+
+    newPrefectures.splice(prefIndex, 0, newPrefectureData);
+    setPrefectures(newPrefectures);
+  };
+
+  const handlePrefectureSelected = async (
+    prefCode: number,
+    selected: boolean,
+  ) => {
+    if (!prefectures) return;
+
+    const prefIndex = getPopulationIndex(prefCode);
+
+    const currentPrefecture = prefectures[prefIndex];
+
+    if (currentPrefecture.data.length === 0 && selected) {
+      setPopulation(prefCode);
+    } else {
+      switchSetting(prefIndex, selected);
     }
   };
 
@@ -76,9 +103,14 @@ export default function usePrefectures() {
   }, []);
 
   // test setPopulation
-  if (prefectures && prefectures[getPopulationIndex(6)].data.length === 0) {
-    setPopulation(6);
-  }
+  // if (prefectures && prefectures[getPopulationIndex(6)].data.length === 0) {
+  //   setPopulation(6);
+  // }
+
+  // test handlePrefectureSelected
+  // if (prefectures) {
+  //   handlePrefectureSelected(18, false);
+  // }
 
   return { prefectures };
 }
