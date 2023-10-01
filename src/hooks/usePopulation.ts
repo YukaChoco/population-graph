@@ -10,7 +10,7 @@ export default function usePopulation() {
     }));
     return displayDatas;
   };
-
+  
   const getPopulationData = async (prefCode: number) => {
     try {
       const response = await axios.get<GetPopulation>(
