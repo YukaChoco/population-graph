@@ -65,14 +65,16 @@ export default function usePrefectures() {
     prefCode: number,
     selected: boolean,
   ) => {
-    if (!prefectures) return;
+    if (!prefectures) {
+      return;
+    }
 
     const prefIndex = getPopulationIndex(prefCode);
 
     const currentPrefecture = prefectures[prefIndex];
 
     if (currentPrefecture.data.length === 0 && selected) {
-      setPopulation(prefCode);
+      await setPopulation(prefCode);
     } else {
       switchSetting(prefIndex, selected);
     }

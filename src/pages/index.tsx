@@ -5,15 +5,17 @@ import SettingSheet from '@/components/SettingSheet';
 import GraphSheet from '@/components/GraphSheet';
 import usePrefectures from '@/hooks/usePrefectures';
 import LoadingModal from '@/components/LoadingModal';
+import useLoading from '@/hooks/useLoading';
 
 export default function Home() {
   const { prefectures, labels, handlePrefectureSelected } = usePrefectures();
-  console.log(prefectures);
+  const { loading, setLoading } = useLoading();
 
   const Main = () => {
     if (prefectures && labels) {
       return (
         <>
+          <LoadingModal onOpen={loading} />
           <GraphSheet
             populationGraph={{
               populationType: 0,
@@ -27,11 +29,13 @@ export default function Home() {
           <SettingSheet
             prefectures={prefectures}
             handleChange={handlePrefectureSelected}
+            setLoading={setLoading}
           />
+          {`${loading}`}
         </>
       );
     }
-    return <>Loading...</>;
+    return <LoadingModal onOpen />;
   };
 
   return (
@@ -46,7 +50,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
-        <LoadingModal onOpen />
         <Header />
         <main className={styles.main}>
           <Main />
