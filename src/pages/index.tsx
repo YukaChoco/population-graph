@@ -6,7 +6,7 @@ import GraphSheet from '@/components/GraphSheet';
 import usePrefectures from '@/hooks/usePrefectures';
 
 export default function Home() {
-  const { prefectures, labels } = usePrefectures();
+  const { prefectures, labels, handlePrefectureSelected } = usePrefectures();
   console.log(prefectures);
 
   const Main = () => {
@@ -25,7 +25,7 @@ export default function Home() {
           />
           <SettingSheet
             prefectures={prefectures}
-            handlePrefectureSelected={() => {}}
+            handleChange={handlePrefectureSelected}
           />
         </>
       );
