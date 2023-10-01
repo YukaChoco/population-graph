@@ -8,8 +8,8 @@ export default function usePopulation() {
       const response = await axios.get<GetPopulation>(
         `/api/population?prefCode=${prefCode}`,
       );
-      const { result } = response.data;
-      return result;
+      const { data } = response.data.result;
+      return data;
     } catch (error) {
       console.error('Error fetching data:', error);
     }

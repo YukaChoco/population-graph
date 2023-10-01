@@ -15,5 +15,5 @@ export interface PrefecturePopulation {
 
 export interface GetPopulation {
   message: string;
-  result: PrefecturePopulation[];
+  result: PrefecturePopulation;
 }
