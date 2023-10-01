@@ -115,15 +115,5 @@ export default function usePrefectures() {
     getPrefectureData();
   }, []);
 
-  // test setPopulation
-  // if (prefectures && prefectures[getPopulationIndex(6)].data.length === 0) {
-  //   setPopulation(6);
-  // }
-
-  // test handlePrefectureSelected
-  // if (prefectures) {
-  //   handlePrefectureSelected(18, false);
-  // }
-
   return { prefectures, labels, handlePrefectureSelected };
 }
