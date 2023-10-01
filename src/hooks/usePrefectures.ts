@@ -53,10 +53,9 @@ export default function usePrefectures() {
 
   const setPrefectureArray = (prefectures: PrefectureCodeName[]) => {
     const prefectureArray: Prefecture[] = prefectures.map(
-      (prefecture, index) => ({
+      (prefecture) => ({
         ...prefecture,
-        selected:
-          index === 0 || index === prefectures.length - 1 ? true : false,
+        selected: false,
         data: [],
       }),
     );
