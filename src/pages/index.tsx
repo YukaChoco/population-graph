@@ -31,7 +31,6 @@ export default function Home() {
             handleChange={handlePrefectureSelected}
             setLoading={setLoading}
           />
-          {`${loading}`}
         </>
       );
     }
