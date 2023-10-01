@@ -7,6 +7,22 @@ import usePrefectures from '@/hooks/usePrefectures';
 
 export default function Home() {
   const { prefectures } = usePrefectures();
+
+  const Main = () => {
+    if (prefectures) {
+      return (
+        <>
+          <GraphSheet />
+          <SettingSheet
+            prefectures={prefectures}
+            handlePrefectureSelected={() => {}}
+          />
+        </>
+      );
+    }
+    return <>Loading...</>;
+  };
+
   return (
     <>
       <Head>
@@ -21,8 +37,7 @@ export default function Home() {
       <div className={styles.container}>
         <Header />
         <main className={styles.main}>
-          <GraphSheet />
-          <SettingSheet />
+          <Main />
         </main>
       </div>
     </>
