@@ -1,5 +1,6 @@
 import Prefecture from '@/types/Prefecture';
 import HandlePrefectureSelected from '@/types/HandlePrefectureSelected';
+import styles from '@/styles/Checkbox.module.css';
 
 interface Props {
   prefecture: Prefecture;
@@ -13,7 +14,7 @@ export default function CheckBox(props: Props) {
   const id = `${prefecture.prefCode}`;
 
   return (
-    <div>
+    <div className={styles.box}>
       <input
         type="checkbox"
         id={id}

@@ -2,3 +2,18 @@
   padding: 8px;
   background: #e7e7e7;
 }
+
+.fieldset {
+  border: none;
+}
+
+.legend {
+  padding: 8px 0px;
+}
+
+.checkbox {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 5.3rem);
+  grid-gap: 4px;
+  justify-content: center;
+}

@@ -13,15 +13,19 @@ export default function SettingSheet(props: Props) {
 
   return (
     <div className={styles.sheet}>
-      <fieldset>
-        <legend>都道府県を選択してください</legend>
-        {prefectures.map((prefecture) => (
-          <CheckBox
-            key={prefecture.prefCode}
-            prefecture={prefecture}
-            handleChange={props.handleChange}
-          />
-        ))}
+      <fieldset className={styles.fieldset}>
+        <legend className={styles.legend}>
+          都道府県を選択してください(複数選択可)
+        </legend>
+        <div className={styles.checkbox}>
+          {prefectures.map((prefecture) => (
+            <CheckBox
+              key={prefecture.prefCode}
+              prefecture={prefecture}
+              handleChange={props.handleChange}
+            />
+          ))}
+        </div>
       </fieldset>
     </div>
   );
