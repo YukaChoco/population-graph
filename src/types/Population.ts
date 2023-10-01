@@ -1,19 +1,20 @@
-export interface PopulationYearValue {
-  year: number;
-  value: number;
-}
-
 export interface PopulationData {
   label: string;
-  data: PopulationYearValue[];
+  data: number[];
 }
 
-export interface PrefecturePopulation {
+export interface GetPrefecturePopulation {
   boundaryYear: number;
-  data: PopulationData[];
+  data: {
+    label: string;
+    data: {
+      year: number;
+      value: number;
+    }[];
+  }[];
 }
 
 export interface GetPopulation {
   message: string;
-  result: PrefecturePopulation[];
+  result: GetPrefecturePopulation[];
 }

@@ -7,6 +7,41 @@ import usePrefectures from '@/hooks/usePrefectures';
 
 export default function Home() {
   const { prefectures } = usePrefectures();
+  console.log(prefectures);
+
+  const Main = () => {
+    if (prefectures) {
+      return (
+        <>
+          <GraphSheet
+            populationGraph={{
+              labels: [
+                '1980',
+                '1985',
+                '1990',
+                '1995',
+                '2000',
+                '2005',
+                '2010',
+                '2015',
+                '2020',
+              ],
+              prefectures: prefectures,
+            }}
+            populationTypeSelecter={{
+              handlePopulationTypeSelecter: () => {},
+            }}
+          />
+          <SettingSheet
+            prefectures={prefectures}
+            handlePrefectureSelected={() => {}}
+          />
+        </>
+      );
+    }
+    return <>Loading...</>;
+  };
+
   return (
     <>
       <Head>
@@ -21,8 +56,7 @@ export default function Home() {
       <div className={styles.container}>
         <Header />
         <main className={styles.main}>
-          <GraphSheet />
-          <SettingSheet />
+          <Main />
         </main>
       </div>
     </>
