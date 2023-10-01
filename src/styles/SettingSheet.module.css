@@ -1,25 +1,37 @@
 .sheet {
-  padding: 8px 12px;
+  height: fit-content;
+  padding: 4px 12px;
+  padding-top: calc(36px + 1.5rem);
   background: #e7e7e7;
+  overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+  .sheet {
+    height: 100vh;
+    overflow-y: scroll;
+  }
 }
 
 .fieldset {
   border: none;
+  padding-bottom: 12px;
 }
 
 .legend {
   width: 100%;
   padding: 8px 0px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid black;
+  margin-bottom: 8px;
 }
 
 .group {
-  margin-bottom: 4px;
-  border-bottom: 1px solid black;
+  margin-bottom: 12px;
 }
 
 .groupName {
+  padding: 4px 2px;
+  margin-bottom: 4px;
+  background-color: white;
   width: 100%;
 }
 
