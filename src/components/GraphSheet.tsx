@@ -10,7 +10,7 @@ interface Props {
     prefectures: Prefecture[];
   };
   populationTypeSelecter: {
-    handlePopulationTypeSelecter: () => void;
+    handlePopulationTypeSelecter: (value: string) => void;
   };
 }
 
