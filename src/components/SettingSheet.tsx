@@ -8,21 +8,18 @@ interface Props {
 }
 
 export default function SettingSheet(props: Props) {
+  const showCheckBox = props.prefectures.map((prefecture) => (
+    <CheckBox
+      key={prefecture.prefCode}
+      prefecture={prefecture}
+      handleChange={props.handlePrefectureSelected}
+    />
+  ));
+
   return (
     <div className={styles.sheet}>
       都道府県を選択してください
-      <CheckBox
-        prefecture={props.prefectures[0]}
-        handleChange={props.handlePrefectureSelected}
-      />
-      <CheckBox
-        prefecture={props.prefectures[1]}
-        handleChange={props.handlePrefectureSelected}
-      />
-      <CheckBox
-        prefecture={props.prefectures[2]}
-        handleChange={props.handlePrefectureSelected}
-      />
+      {showCheckBox}
     </div>
   );
 }
