@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Colors,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import styles from '@/styles/PopulationGraph.module.css';
@@ -20,6 +21,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  Colors,
 );
 
 export const options = {
@@ -55,8 +57,6 @@ const popultationData = [
       12817, 12707, 12571, 12602, 12199, 11518, 10888, 10133, 9302, 8431, 7610,
       6816, 6048, 5324,
     ],
-    backgroundColor: ['#9b59b6'],
-    borderColor: ['#9b59b6'],
     borderWidth: 2,
   },
   {
@@ -65,8 +65,6 @@ const popultationData = [
       12906, 12769, 12346, 12019, 11728, 11442, 11321, 11144, 11936, 1822, 1705,
       1593, 1513, 1443,
     ],
-    backgroundColor: ['#e67e22'],
-    borderColor: ['#e67e22'],
     borderWidth: 2,
   },
 ];
