@@ -23,8 +23,8 @@ export default function Home() {
         <>
           <LoadingModal onOpen={loading} />
           <GraphSheet
+            populationType={populationType}
             populationGraph={{
-              populationType,
               labels,
               prefectures,
               getPopulationWithType,

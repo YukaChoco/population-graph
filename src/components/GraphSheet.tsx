@@ -4,8 +4,8 @@ import PopulationTypeSelecter from './PopulationTypeSelecter';
 import Prefecture from '@/types/Prefecture';
 
 interface Props {
+  populationType: string;
   populationGraph: {
-    populationType: string;
     labels: string[];
     prefectures: Prefecture[];
     getPopulationWithType: (prefecture: Prefecture, type: string) => number[];
@@ -16,11 +16,14 @@ interface Props {
 }
 
 export default function GraphSheet(props: Props) {
-  const { populationTypeSelecter, populationGraph } = props;
+  const { populationType, populationTypeSelecter, populationGraph } = props;
   return (
     <div className={styles.sheet}>
-      <PopulationTypeSelecter {...populationTypeSelecter} />
-      <PopulationGraph {...populationGraph} />
+      <PopulationTypeSelecter
+        populationType={populationType}
+        {...populationTypeSelecter}
+      />
+      <PopulationGraph populationType={populationType} {...populationGraph} />
     </div>
   );
 }
