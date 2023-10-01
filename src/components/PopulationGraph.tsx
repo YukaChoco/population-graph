@@ -10,6 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import styles from '@/styles/PopulationGraph.module.css';
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +24,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'top' as const,
@@ -75,5 +77,9 @@ export const graphData = {
 };
 
 export default function PopulationGraph() {
-  return <Line options={options} data={graphData} />;
+  return (
+    <div className={styles.graph}>
+      <Line options={options} data={graphData} />
+    </div>
+  );
 }
