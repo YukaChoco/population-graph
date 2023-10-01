@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import styles from '@/styles/PopulationGraph.module.css';
+import Prefecture from '@/types/Prefecture';
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +25,12 @@ ChartJS.register(
   Colors,
 );
 
-export const options = {
+interface Props {
+  labels: string[];
+  prefectures: Prefecture[];
+}
+
+const options = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -74,7 +80,7 @@ export const graphData = {
   datasets: popultationData,
 };
 
-export default function PopulationGraph() {
+export default function PopulationGraph(props: Props) {
   return (
     <div className={styles.graph}>
       <Line options={options} data={graphData} />
