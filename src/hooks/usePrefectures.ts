@@ -10,7 +10,7 @@ export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
   const [labels, setLabels] = useState<string[] | null>(null);
 
-  const { getFirstLabelsData, getPopulationData } = usePopulation();
+  const { getFirstPopulationData, getDisplayPopulationData } = usePopulation();
 
   const getPopulationIndex = (prefCode: number) => {
     if (!prefectures) return -1;
@@ -30,7 +30,7 @@ export default function usePrefectures() {
 
     const [currentPrefectureData] = newPrefectures.splice(prefIndex, 1);
 
-    const newData = await getPopulationData(prefCode);
+    const newData = await getDisplayPopulationData(prefCode);
 
     if (newData) {
       const newPrefectureData: Prefecture = {
@@ -78,12 +78,27 @@ export default function usePrefectures() {
     }
   };
 
-  const setPrefectureArray = (prefectures: PrefectureCodeName[]) => {
-    const prefectureArray: Prefecture[] = prefectures.map((prefecture) => ({
-      ...prefecture,
-      selected: false,
-      data: [],
-    }));
+  const setPrefectureArray = async (prefectures: PrefectureCodeName[]) => {
+    const result = await getFirstPopulationData(prefectures[0].prefCode);
+    if (!result) return;
+    const { labels, firstData } = result;
+    const prefectureArray: Prefecture[] = prefectures.map(
+      (prefecture, index) => {
+        if (index === 0) {
+          return {
+            ...prefecture,
+            selected: true,
+            data: firstData,
+          };
+        }
+        return {
+          ...prefecture,
+          selected: false,
+          data: [],
+        };
+      },
+    );
+    setLabels(labels);
     setPrefectures(prefectureArray);
   };
 
@@ -92,8 +107,6 @@ export default function usePrefectures() {
       try {
         const response = await axios.get<GetPrefecture>('/api/prefecture');
         const { result } = response.data;
-        const firstLabels = await getFirstLabelsData(result[0].prefCode);
-        if (firstLabels) setLabels(firstLabels);
         setPrefectureArray(result);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -101,12 +114,6 @@ export default function usePrefectures() {
     };
     getPrefectureData();
   }, []);
-
-  useEffect(() => {
-    if (prefectures) {
-      handlePrefectureSelected(prefectures[0].prefCode,true);
-    }
-  }, [labels]);
 
   // test setPopulation
   // if (prefectures && prefectures[getPopulationIndex(6)].data.length === 0) {
