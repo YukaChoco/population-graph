@@ -40,6 +40,7 @@ export default function PopulationGraph(props: Props) {
     ...GRAPH_OPTIONS,
     plugins: {
       title: {
+        display: true,
         text: `都道府県別の${populationType}推移グラフ`,
       },
     },

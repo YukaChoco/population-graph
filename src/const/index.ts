@@ -25,13 +25,25 @@ export const POPULATION_TYPE = [
 export const GRAPH_OPTIONS = {
   responsive: true,
   maintainAspectRatio: false,
+  scales: {
+    x: {
+      title: {
+        display: true,
+        text: '年 [年]',
+      },
+    },
+    y: {
+      title: {
+        display: true,
+        text: '人口 [人]',
+      },
+    },
+  },
   plugins: {
     legend: {
       position: 'top' as const,
     },
-    title: {
-      display: true,
-    },
+    title: {},
   },
 };
 
