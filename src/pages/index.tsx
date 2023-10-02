@@ -50,7 +50,7 @@ export default function Home() {
         <title>選んで人口を比較しよう</title>
         <meta
           name="description"
-          content="都道府県別総人口の推移をグラフで確認できるサイトです。"
+          content="都道府県別に総人口または年齢層別人口の推移をグラフで確認できるサイトです。"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

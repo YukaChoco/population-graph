@@ -1,6 +1,18 @@
 .sheet {
-  max-height: 100vh;
-  padding: 8px 0px;
+  min-height: fit-content;
+  margin: 12px 0px;
+  height: fit-content;
+  padding-top: calc(32px + 1.5rem);
   display: grid;
-  grid-template-rows: 1fr 80vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 60vh;
+  place-content: center;
+}
+
+@media (min-width: 640px) {
+  .main {
+    min-height: 100vh;
+    margin: 0px;
+    grid-template-rows: 2rem 80vh;
+  }
 }
