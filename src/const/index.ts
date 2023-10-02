@@ -21,3 +21,45 @@ export const POPULATION_TYPE = [
   '生産年齢人口',
   '老年人口',
 ];
+
+export const GRAPH_OPTIONS = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    x: {
+      title: {
+        display: true,
+        text: '年 [年]',
+      },
+    },
+    y: {
+      title: {
+        display: true,
+        text: '人口 [人]',
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {},
+  },
+};
+
+export const NO_DATA = [
+  {
+    label: ' 都道府県を選択してください',
+    data: [],
+    borderColor: 'rgba(75, 192, 192, 1)',
+    borderWidth: 2,
+    fill: false,
+  },
+  {
+    label: '',
+    data: [],
+    borderColor: 'rgba(75, 192, 192, 1)',
+    borderWidth: 2,
+    fill: false,
+  },
+];
