@@ -1,17 +1,10 @@
 import styles from '@/styles/GraphSheet.module.css';
 import PopulationGraph from './PopulationGraph';
 import PopulationTypeSelecter from './PopulationTypeSelecter';
+import GraphSheetProps from '@/types/GraphSheetProps';
 import Prefecture from '@/types/Prefecture';
 
-interface Props {
-  populationType: string;
-  labels: string[];
-  prefectures: Prefecture[];
-  getPopulationWithType: (prefecture: Prefecture, type: string) => number[];
-  handlePopulationTypeSelecter: (value: string) => void;
-}
-
-export default function GraphSheet(props: Props) {
+export default function GraphSheet(props: GraphSheetProps) {
   const { populationType, labels, prefectures, getPopulationWithType, handlePopulationTypeSelecter } = props;
   return (
     <div className={styles.sheet}>
