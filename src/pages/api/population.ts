@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
+import type { GetPopulation } from '@/types/Population';
 import { API_HEADERS } from '@/const';
-import { GetPopulation } from '@/types/Population';
 
 export default async function handler(
   req: NextApiRequest,

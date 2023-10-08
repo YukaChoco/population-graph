@@ -1,6 +1,6 @@
 import styles from '@/styles/GraphSheet.module.css';
-import PopulationGraph from './PopulationGraph';
-import PopulationTypeSelecter from './PopulationTypeSelecter';
+import PopulationGraph from '@/components/PopulationGraph';
+import PopulationTypeSelecter from '@/components/PopulationTypeSelecter';
 import type GraphSheetProps from '@/types/GraphSheetProps';
 import type Prefecture from '@/types/Prefecture';
 

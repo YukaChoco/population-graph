@@ -1,8 +1,8 @@
 import styles from '@/styles/SettingSheet.module.css';
-import CheckBox from './atom/CheckBox';
+import CheckBox from '@/components/atom/CheckBox';
 import type Prefecture from '@/types/Prefecture';
-import { PREFECTURES_GROUP } from '@/const';
 import type SettingSheetProps from '@/types/SettingSheetProps';
+import { PREFECTURES_GROUP } from '@/const';
 
 export default function SettingSheet({
   prefectures = [],

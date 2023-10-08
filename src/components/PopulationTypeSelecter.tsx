@@ -1,6 +1,6 @@
-import { POPULATION_TYPE } from '@/const';
 import styles from '@/styles/PopulationTypeSelecter.module.css';
 import type PopulationTypeSelecterProps from '@/types/PopulationTypeSelecterProps';
+import { POPULATION_TYPE } from '@/const';
 
 export default function PopulationTypeSelecter({
   populationType = '',

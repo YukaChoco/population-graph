@@ -1,5 +1,5 @@
 import styles from '@/styles/LoadingModal.module.css';
-import LoadingSpinner from './atom/LoadingSpinner';
+import LoadingSpinner from '@/components/atom/LoadingSpinner';
 import type LoadingModalProps from '@/types/LoadingModalProps';
 
 export default function LoadingModal({
