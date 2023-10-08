@@ -1,4 +1,6 @@
+import type HandlePopulationTypeSelecterProps from "./HandlePopulationTypeSelecterProps";
+
 export default interface PopulationTypeSelecterProps {
   populationType: string;
-  handlePopulationTypeSelecter: (value: string) => void;
+  handlePopulationTypeSelecter: HandlePopulationTypeSelecterProps['handlePopulationTypeSelecter'];
 }
