@@ -2,8 +2,11 @@ import { POPULATION_TYPE } from '@/const';
 import styles from '@/styles/PopulationTypeSelecter.module.css';
 import type PopulationTypeSelecterProps from '@/types/PopulationTypeSelecterProps';
 
-export default function PopulationTypeSelecter(props: PopulationTypeSelecterProps) {
-  const { populationType, handlePopulationTypeSelecter } = props;
+export default function PopulationTypeSelecter({
+  populationType = '',
+  handlePopulationTypeSelecter = (value: string) => { },
+}: PopulationTypeSelecterProps) {
+
   return (
     <div className={styles.container}>
       <select
