@@ -1,5 +1,5 @@
 import styles from '@/styles/Checkbox.module.css';
-import type CheckBoxProps from '@/types/CheckBox';
+import type CheckBoxProps from '@/types/CheckBoxProps';
 
 export default function CheckBox({
   prefCode = 0,
