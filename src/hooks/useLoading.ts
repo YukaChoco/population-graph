@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import usePrefectures from './usePrefectures';
+import { useState } from 'react';
 
 export default function useLoading() {
   const [loading, setLoading] = useState<boolean>(false);

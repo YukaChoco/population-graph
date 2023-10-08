@@ -12,7 +12,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import styles from '@/styles/PopulationGraph.module.css';
-import Prefecture from '@/types/Prefecture';
+import type PopulationGraphProps from '@/types/PopulationGraphProps';
+import type Prefecture from '@/types/Prefecture';
 import { GRAPH_OPTIONS, NO_DATA } from '@/const';
 
 ChartJS.register(
@@ -26,15 +27,12 @@ ChartJS.register(
   Colors,
 );
 
-interface Props {
-  populationType: string;
-  labels: string[];
-  prefectures: Prefecture[];
-  getPopulationWithType: (prefecture: Prefecture, type: string) => number[];
-}
-
-export default function PopulationGraph(props: Props) {
-  const { populationType, labels, prefectures, getPopulationWithType } = props;
+export default function PopulationGraph({
+  populationType = '',
+  labels = [],
+  prefectures = [],
+  getPopulationWithType = (prefecture: Prefecture, type: string) => [],
+}: PopulationGraphProps) {
 
   const options = {
     ...GRAPH_OPTIONS,

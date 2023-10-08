@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-import { API_HEADERS } from '@/const';
 import type { GetPrefecture } from '@/types/Prefecture';
+import { API_HEADERS } from '@/const';
 
 export default async function handler(
   req: NextApiRequest,

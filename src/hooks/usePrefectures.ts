@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-import Prefecture, {
-  GetPrefecture,
-  PrefectureCodeName,
-} from '@/types/Prefecture';
 import axios from 'axios';
-import usePopulation from './usePopulation';
+import type Prefecture from '@/types/Prefecture';
+import type { GetPrefecture, PrefectureCodeName } from '@/types/Prefecture';
+import usePopulation from '@/hooks/usePopulation';
 
 export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
