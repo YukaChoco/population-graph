@@ -1,12 +1,8 @@
 import { POPULATION_TYPE } from '@/const';
 import styles from '@/styles/PopulationTypeSelecter.module.css';
+import type PopulationTypeSelecterProps from '@/types/PopulationTypeSelecterProps';
 
-interface Props {
-  populationType: string;
-  handlePopulationTypeSelecter: (value: string) => void;
-}
-
-export default function PopulationTypeSelecter(props: Props) {
+export default function PopulationTypeSelecter(props: PopulationTypeSelecterProps) {
   const { populationType, handlePopulationTypeSelecter } = props;
   return (
     <div className={styles.container}>
