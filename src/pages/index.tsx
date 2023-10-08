@@ -53,6 +53,9 @@ export default function Home() {
           content="都道府県別に総人口または年齢層別人口の推移をグラフで確認できるサイトです。"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="選んで人口を比較しよう-都道府県別人口推移グラフ-" />
+        <meta property="og:description" content="都道府県別に総人口または年齢層別人口の推移をグラフで確認できるサイトです。" />
+        <meta property="og:image" content="/ogp_img.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
