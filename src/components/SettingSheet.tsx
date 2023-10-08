@@ -1,11 +1,15 @@
 import styles from '@/styles/SettingSheet.module.css';
 import CheckBox from './atom/CheckBox';
-import Prefecture from '@/types/Prefecture';
+import type Prefecture from '@/types/Prefecture';
 import { PREFECTURES_GROUP } from '@/const';
 import type SettingSheetProps from '@/types/SettingSheetProps';
 
-export default function SettingSheet(props: SettingSheetProps) {
-  const { prefectures, handleChange, setLoading } = props;
+export default function SettingSheet({
+  prefectures = [],
+  handleChange = () => { },
+  setLoading = (selected: boolean) => { }
+}: SettingSheetProps) {
+
   const showCheckBox = (showPrefectures: Prefecture[]) => {
     const displayCheckBox = showPrefectures.map((prefecture) => (
       <CheckBox
