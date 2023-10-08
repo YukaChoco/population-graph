@@ -3,8 +3,8 @@ import styles from '@/styles/Home.module.css';
 import Header from '@/components/Header';
 import SettingSheet from '@/components/SettingSheet';
 import GraphSheet from '@/components/GraphSheet';
-import usePrefectures from '@/hooks/usePrefectures';
 import LoadingModal from '@/components/LoadingModal';
+import usePrefectures from '@/hooks/usePrefectures';
 import useLoading from '@/hooks/useLoading';
 import usePopulationType from '@/hooks/usePopulationType';
 
@@ -17,27 +17,29 @@ export default function Home() {
     getPopulationWithType,
   } = usePopulationType();
 
+
+
   const Main = () => {
     if (prefectures && labels) {
+
+      const graphSheetProps = {
+        populationType,
+        labels,
+        prefectures,
+        getPopulationWithType,
+        handlePopulationTypeSelecter,
+      }
+      const settingSheetProps = {
+        prefectures,
+        handleChange: handlePrefectureSelected,
+        setLoading,
+      }
+
       return (
         <>
           <LoadingModal onOpen={loading} />
-          <GraphSheet
-            populationType={populationType}
-            populationGraph={{
-              labels,
-              prefectures,
-              getPopulationWithType,
-            }}
-            populationTypeSelecter={{
-              handlePopulationTypeSelecter,
-            }}
-          />
-          <SettingSheet
-            prefectures={prefectures}
-            handleChange={handlePrefectureSelected}
-            setLoading={setLoading}
-          />
+          <GraphSheet {...graphSheetProps} />
+          <SettingSheet {...settingSheetProps} />
         </>
       );
     }

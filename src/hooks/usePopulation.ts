@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import axios from 'axios';
-import { GetPopulation, GetPrefecturePopulation } from '@/types/Population';
+import type { GetPopulation, GetPrefecturePopulation } from '@/types/Population';
 
 export default function usePopulation() {
   const getPopulationData = async (prefCode: number) => {
