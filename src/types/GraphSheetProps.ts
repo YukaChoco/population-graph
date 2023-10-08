@@ -1,5 +1,4 @@
 import type Prefecture from '@/types/Prefecture';
-import type HandlePrefectureSelected from '@/types/HandlePrefectureSelected';
 
 export default interface GraphSheetProps {
   populationType: string;

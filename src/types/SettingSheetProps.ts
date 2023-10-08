@@ -1,9 +1,9 @@
 import type Prefecture from '@/types/Prefecture';
-import type HandlePrefectureSelected from '@/types/HandlePrefectureSelected';
+import type HandlePrefectureSelectedProps from '@/types/HandlePrefectureSelectedProps';
 
 export default interface SettingSheetProps {
   prefectures: Prefecture[];
-  handleChange: HandlePrefectureSelected['handlePrefectureSelected'];
+  handleChange: HandlePrefectureSelectedProps['handlePrefectureSelected'];
   setLoading: (selected: boolean) => void;
 }
 

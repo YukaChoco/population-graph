@@ -1,6 +1,6 @@
-export default interface HandlePrefectureSelected {
+export default interface HandlePrefectureSelectedProps {
   handlePrefectureSelected: (
     prefCode: number,
     selected: boolean,
-  ) => Promise<void>;
+  ) => void;
 }
