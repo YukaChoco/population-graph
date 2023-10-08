@@ -17,27 +17,29 @@ export default function Home() {
     getPopulationWithType,
   } = usePopulationType();
 
+
+
   const Main = () => {
     if (prefectures && labels) {
+
+      const graphSheetProps = {
+        populationType,
+        labels,
+        prefectures,
+        getPopulationWithType,
+        handlePopulationTypeSelecter,
+      }
+      const settingSheetProps = {
+        prefectures,
+        handleChange: handlePrefectureSelected,
+        setLoading,
+      }
+
       return (
         <>
           <LoadingModal onOpen={loading} />
-          <GraphSheet
-            populationType={populationType}
-            populationGraph={{
-              labels,
-              prefectures,
-              getPopulationWithType,
-            }}
-            populationTypeSelecter={{
-              handlePopulationTypeSelecter,
-            }}
-          />
-          <SettingSheet
-            prefectures={prefectures}
-            handleChange={handlePrefectureSelected}
-            setLoading={setLoading}
-          />
+          <GraphSheet {...graphSheetProps} />
+          <SettingSheet {...settingSheetProps} />
         </>
       );
     }
