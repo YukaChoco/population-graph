@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = { args: args };
 export const SomeSelected: Story = { args: customArgs.someSelected };
-export const Notselected: Story = { args: customArgs.notSelected };
+export const NotSelected: Story = { args: customArgs.notSelected };
 export const FewPrefectures: Story = { args: customArgs.fewPrefectures };
 export const NoPrefectures: Story = { args: customArgs.noPrefectures };
