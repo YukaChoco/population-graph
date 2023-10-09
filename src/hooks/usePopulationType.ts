@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import type Prefecture from '@/types/Prefecture';
 import { POPULATION_TYPE } from '@/const';
-import Prefecture from '@/types/Prefecture';
 
 export default function usePopulationType() {
   const [populationType, setPopulationType] = useState<string>(
