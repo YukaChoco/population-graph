@@ -17,16 +17,19 @@ export default function Home() {
     getPopulationWithType,
   } = usePopulationType();
 
-
-
   const Main = () => {
     if (prefectures && labels) {
+      const popultationData = prefectures
+        .filter((prefecture) => prefecture.selected)
+        .map((prefecture) => ({
+          prefName: prefecture.prefName,
+          data: getPopulationWithType(prefecture, populationType),
+        }));
 
       const graphSheetProps = {
         populationType,
         labels,
-        prefectures,
-        getPopulationWithType,
+        popultationData,
         handlePopulationTypeSelecter,
       }
       const settingSheetProps = {

@@ -1,11 +1,5 @@
-import type Prefecture from '@/types/Prefecture';
-import type GetPopulationWithTypeProps from './GetPopulationWithTypeProps';
-import type HandlePopulationTypeSelecterProps from './HandlePopulationTypeSelecterProps';
+import type PopulationGraphProps from './PopulationGraphProps';
+import type PopulationTypeSelecterProps from './PopulationTypeSelecterProps';
 
-export default interface GraphSheetProps {
-  populationType: string;
-  labels: string[];
-  prefectures: Prefecture[];
-  getPopulationWithType: GetPopulationWithTypeProps['getPopulationWithType'];
-  handlePopulationTypeSelecter: HandlePopulationTypeSelecterProps['handlePopulationTypeSelecter'];
-}
+export default interface GraphSheetProps
+  extends PopulationGraphProps, PopulationTypeSelecterProps { }

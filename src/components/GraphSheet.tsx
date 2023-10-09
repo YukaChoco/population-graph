@@ -2,14 +2,12 @@ import styles from '@/styles/GraphSheet.module.css';
 import PopulationGraph from '@/components/PopulationGraph';
 import PopulationTypeSelecter from '@/components/PopulationTypeSelecter';
 import type GraphSheetProps from '@/types/GraphSheetProps';
-import type Prefecture from '@/types/Prefecture';
 
 export default function GraphSheet({
   populationType = '',
   labels = [],
-  prefectures = [],
-  getPopulationWithType = (prefecture: Prefecture, type: string) => [],
-  handlePopulationTypeSelecter = (value: string) => { },
+  popultationData = [],
+  handlePopulationTypeSelecter = (_value: string) => { },
 }: GraphSheetProps) {
 
   return (
@@ -21,8 +19,7 @@ export default function GraphSheet({
       <PopulationGraph
         populationType={populationType}
         labels={labels}
-        prefectures={prefectures}
-        getPopulationWithType={getPopulationWithType}
+        popultationData={popultationData}
       />
     </div>
   );
