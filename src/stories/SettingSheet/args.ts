@@ -1,4 +1,4 @@
-import { NOT_SELECTED_PREFECTURES, PREFECTURES, SOME_POPULATION_PREFECTURES } from "../const/prefectures"
+import { NOT_SELECTED_PREFECTURES, PREFECTURES, SOME_POPULATION_PREFECTURES, FEW_PREFECTURES } from "../const/prefectures"
 
 export const args = {
   prefectures: PREFECTURES,
@@ -16,8 +16,6 @@ export const argTypes = {
   setLoading: { table: { disable: true }, },
 }
 
-const fewPrefectures = SOME_POPULATION_PREFECTURES.filter((prefecture) => prefecture.selected);
-
 export const customArgs = {
   someSelected: {
     ...args,
@@ -29,7 +27,7 @@ export const customArgs = {
   },
   fewPrefectures: {
     ...args,
-    prefectures: fewPrefectures,
+    prefectures: FEW_PREFECTURES,
   },
   noPrefectures: {
     ...args,
