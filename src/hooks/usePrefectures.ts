@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import type Prefecture from '@/types/Prefecture';
-import type { GetPrefecture, PrefectureCodeName } from '@/types/Prefecture';
+import type { GetPrefecture, PrefectureCodeName, ShowPrefecture } from '@/types/Prefecture';
 import usePopulation from '@/hooks/usePopulation';
+import usePopulationType from './usePopulationType';
 
 export default function usePrefectures() {
   const [prefectures, setPrefectures] = useState<Prefecture[] | null>(null);
+  const [populationData, setPopulationData] = useState<ShowPrefecture[] | null>(null);
   const [labels, setLabels] = useState<string[] | null>(null);
 
   const { getFirstPopulationData, getDisplayPopulationData } = usePopulation();
+  const { populationType, getPopulationWithType } = usePopulationType();
 
   const getPopulationIndex = (prefCode: number) => {
     if (!prefectures) return -1;
@@ -115,5 +118,17 @@ export default function usePrefectures() {
     getPrefectureData();
   }, []);
 
-  return { prefectures, labels, handlePrefectureSelected };
+  useEffect(() => {
+    if (prefectures) {
+      const newpPopultationData = prefectures
+        .filter((prefecture) => prefecture.selected)
+        .map((prefecture) => ({
+          prefName: prefecture.prefName,
+          data: getPopulationWithType(prefecture, populationType),
+        }));
+      setPopulationData(newpPopultationData);
+    }
+  }, [prefectures])
+
+  return { prefectures, populationData, labels, handlePrefectureSelected };
 }

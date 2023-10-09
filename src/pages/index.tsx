@@ -9,27 +9,20 @@ import useLoading from '@/hooks/useLoading';
 import usePopulationType from '@/hooks/usePopulationType';
 
 export default function Home() {
-  const { prefectures, labels, handlePrefectureSelected } = usePrefectures();
+  const { prefectures, populationData, labels, handlePrefectureSelected } = usePrefectures();
   const { loading, setLoading } = useLoading();
   const {
     populationType,
     handlePopulationTypeSelecter,
-    getPopulationWithType,
   } = usePopulationType();
 
   const Main = () => {
-    if (prefectures && labels) {
-      const popultationData = prefectures
-        .filter((prefecture) => prefecture.selected)
-        .map((prefecture) => ({
-          prefName: prefecture.prefName,
-          data: getPopulationWithType(prefecture, populationType),
-        }));
+    if (prefectures && populationData && labels) {
 
       const graphSheetProps = {
         populationType,
         labels,
-        popultationData,
+        populationData,
         handlePopulationTypeSelecter,
       }
       const settingSheetProps = {
