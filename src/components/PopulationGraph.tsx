@@ -13,7 +13,6 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from '@/styles/PopulationGraph.module.css';
 import type PopulationGraphProps from '@/types/PopulationGraphProps';
-import type Prefecture from '@/types/Prefecture';
 import { GRAPH_OPTIONS, NO_DATA } from '@/const';
 
 ChartJS.register(
@@ -30,8 +29,7 @@ ChartJS.register(
 export default function PopulationGraph({
   populationType = '',
   labels = [],
-  prefectures = [],
-  getPopulationWithType = (prefecture: Prefecture, type: string) => [],
+  popultationData = [],
 }: PopulationGraphProps) {
 
   const options = {
@@ -44,16 +42,11 @@ export default function PopulationGraph({
     },
   };
 
-  const popultationData = prefectures
-    .filter((prefecture) => prefecture.selected)
-    .map((prefecture) => ({
-      label: prefecture.prefName,
-      data: getPopulationWithType(prefecture, populationType),
-    }));
-
   const graphData = {
     labels,
-    datasets: popultationData.length !== 0 ? popultationData : NO_DATA,
+    datasets: popultationData.length !== 0
+      ? popultationData.map((data) => ({ label: data.prefName, data: data.data }))
+      : NO_DATA,
   };
 
   return (

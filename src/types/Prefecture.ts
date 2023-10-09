@@ -5,6 +5,11 @@ export default interface Prefecture extends PrefectureCodeName {
   data: PopulationData[];
 }
 
+export interface ShowPrefecture {
+  prefName: string,
+  data: number[];
+}
+
 export interface PrefectureCodeName {
   prefCode: number;
   prefName: string;

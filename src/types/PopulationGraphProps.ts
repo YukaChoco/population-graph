@@ -1,9 +1,7 @@
-import type Prefecture from '@/types/Prefecture';
-import type GetPopulationWithTypeProps from './GetPopulationWithTypeProps';
+import type { ShowPrefecture } from '@/types/Prefecture';
 
 export default interface PopulationGraphProps {
   populationType: string;
   labels: string[];
-  prefectures: Prefecture[];
-  getPopulationWithType: GetPopulationWithTypeProps['getPopulationWithType'];
+  popultationData: ShowPrefecture[];
 }
