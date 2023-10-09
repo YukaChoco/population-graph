@@ -6,7 +6,7 @@ import type GraphSheetProps from '@/types/GraphSheetProps';
 export default function GraphSheet({
   populationType = '',
   labels = [],
-  popultationData = [],
+  populationData = [],
   handlePopulationTypeSelecter = (_value: string) => { },
 }: GraphSheetProps) {
 
@@ -19,7 +19,7 @@ export default function GraphSheet({
       <PopulationGraph
         populationType={populationType}
         labels={labels}
-        popultationData={popultationData}
+        populationData={populationData}
       />
     </div>
   );

@@ -29,7 +29,7 @@ ChartJS.register(
 export default function PopulationGraph({
   populationType = '',
   labels = [],
-  popultationData = [],
+  populationData = [],
 }: PopulationGraphProps) {
 
   const options = {
@@ -44,8 +44,8 @@ export default function PopulationGraph({
 
   const graphData = {
     labels,
-    datasets: popultationData.length !== 0
-      ? popultationData.map((data) => ({ label: data.prefName, data: data.data }))
+    datasets: populationData.length !== 0
+      ? populationData.map((data) => ({ label: data.prefName, data: data.data }))
       : NO_DATA,
   };
 
