@@ -1,4 +1,4 @@
-import { NOT_SELECTED_PREFECTURES, PREFECTURES, SOME_POPULATION_PREFECTURES } from "../const"
+import { NOT_SELECTED_PREFECTURES, PREFECTURES, SOME_POPULATION_PREFECTURES } from "../const/prefectures"
 
 export const args = {
   prefectures: PREFECTURES,
