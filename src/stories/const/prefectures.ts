@@ -1,4 +1,6 @@
-export const PREFECTURES = [
+import Prefecture from "@/types/Prefecture";
+
+export const PREFECTURES: Prefecture[] = [
   {
     "prefCode": 1,
     "prefName": "北海道",
@@ -376,7 +378,7 @@ export const PREFECTURES = [
   }
 ]
 
-export const SOME_POPULATION_PREFECTURES = PREFECTURES
+export const SOME_POPULATION_PREFECTURES: Prefecture[] = PREFECTURES
   .filter((prefecture) => prefecture.prefCode === 2 || prefecture.prefCode === 15)
   .map((prefecture) => {
     if (prefecture.prefCode === 2) {
@@ -485,9 +487,9 @@ export const SOME_POPULATION_PREFECTURES = PREFECTURES
     });
   });
 
-export const NOT_SELECTED_PREFECTURES = SOME_POPULATION_PREFECTURES.map((prefecture) => ({
+export const NOT_SELECTED_PREFECTURES: Prefecture[] = SOME_POPULATION_PREFECTURES.map((prefecture) => ({
   ...prefecture,
   selected: false,
 }))
 
-export const FEW_PREFECTURES = SOME_POPULATION_PREFECTURES.filter((prefecture) => prefecture.selected);
+export const FEW_PREFECTURES: Prefecture[] = SOME_POPULATION_PREFECTURES.filter((prefecture) => prefecture.selected);
